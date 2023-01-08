@@ -8,7 +8,7 @@ With the container open, navigate to the terminal tab and type "bash" as this gr
 
 Installing extra packages such as fastjet/delphes/pad are recommended, and can be done so by typing "install" and finding the package to be installed. Note: installing normal PAD may not function at the moment, though the other two PAD packages should work just fine.
 
-### The last major thing to do is to switch the rendering package from ROOT to matplotlib (or gnuplot if desired) as ROOT doesn't function. This can be done by typing "set main.graphic_render = matplotlib" (or gnuplot).
+### The last major thing to do is to switch the rendering package from ROOT to matplotlib as ROOT doesn't function. This can be done by typing "set main.graphic_render = matplotlib".
 
 Unfortunately this must be done every time the madanalysis5 terminal is opened; editing instillation_options.dat to bypass ROOT doesn't seem to function in docker while ROOT is still needed to download other packages.
 
