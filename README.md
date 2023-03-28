@@ -1,4 +1,6 @@
-# Updated 07.03.2023 to include MadAnalysis5 and MadGraph5. They can be located in /MG5_aMC and /madanalysis respectively.
+# Updated 27.03.2023 to include LLP models for use in MG5, added for ease of access; models uploaded are from https://longlivedparticles.web.cern.ch/.
+
+### Updated 07.03.2023 to include MadAnalysis5 and MadGraph5. They can be located in /MG5_aMC and /madanalysis respectively.
 
 ## This document is meant to be used to help set up MadAnalysis5 (https://github.com/MadAnalysis/madanalysis5) using Docker, as all other existing versions on Docker are outdated/non-functional.
 
