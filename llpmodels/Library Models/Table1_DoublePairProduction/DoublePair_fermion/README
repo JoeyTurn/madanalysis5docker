@@ -1,0 +1,13 @@
+DOUBLE PAIR PRODUCTION: FERMION WITH INVISIBLE FINAL STATE
+Brian Shuve
+
+The parameters to change in the simplified model are:
+
+1) The mass of the LLP (PID=1000025), default value -1.00000e+02 (you can leave this negative,
+that just changes the phase of the fermion state)
+
+2) The mass of the stable invisible particle (PID=1000022)
+
+3) The width of the LLP in the WIDTH block (same PID), default value -1.974600e-13 
+
+Madspin decay cards provided: jj+invisible, ll+invisible

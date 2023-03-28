@@ -1,0 +1,14 @@
+HEAVY PARENT PRODUCTION: FERMION WITH INVISIBLE FINAL STATE
+Brian Shuve
+
+The parameters to change in the simplified model are:
+
+1) The mass of the LLP (PID=1000023), default value 1.00000e+02
+
+2) The mass of the stable invisible particle (PID=1000022), default value 1.000000e+00
+
+3) The mass of the heavy parent particle (PID=2000002), default value 6.000000e+02
+
+4) The width of the LLP in the WIDTH block (same PID), default value 1.974600e-13
+
+Madspin decay cards provided: jj+invisible, ll+invisible

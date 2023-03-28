@@ -1,0 +1,10 @@
+DOUBLE PAIR PRODUCTION: SCALAR
+Brian Shuve
+
+The parameters to change in the simplified model are:
+
+1) The mass of the LLP (PID=1000012), default value 1.00000e+02
+
+2) The width of the LLP in the WIDTH block (same PID), default value 1.974600e-13 
+
+Madspin decay cards provided: 2 jets, l+ l-

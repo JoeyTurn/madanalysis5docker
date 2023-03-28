@@ -1,0 +1,17 @@
+HEAVY PARENT PRODUCTION: SCALAR
+Brian Shuve
+
+This model has direct production of "gluinos", which decay to "neutralinos", which 
+in turn decay to LLP "sneutrinos".
+
+The parameters to change in the simplified model are:
+
+1) The mass of the LLP (PID=1000012), default value 1.500000e+02
+
+2) The mass of the heavy gluino (PID=1000021), default value 6.000000e+02
+
+3) The mass of the intermediate neutralino (PID=1000023), default value 2.000000e+02
+
+4) The width of the LLP in the WIDTH block (same PID), default value 1.974600e-13
+
+Madspin decay cards provided: 2 jets, l+ l-

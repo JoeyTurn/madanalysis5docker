@@ -1,0 +1,6 @@
+SEMI-VISIBLE JETS
+Eshwen Bhal, Tim Cohen, Mariangela Lisanti, Hou Keong Lou, Siddharth Mishra-Sharma 
+
+Git repository for of the model of arXiv:1503.00009. This is a model in which hidden-sector states are charged under a new confining gauge group, leading to QCD-like showers. The showers produce both stable, invisible dark matter, as well as unstable states that decay back to the SM. This produces ``semi-visible'' jets.
+
+The git repository is here: https://github.com/eshwen/SemivisibleJets

@@ -1,0 +1,19 @@
+HIGGS PRODUCTION, 2 LLPs + INVISIBLE: SCALAR LLP DECAYING TO PHOTONS
+Brian Shuve
+
+This model has direct production of the SM Higgs, which decays to a pair of fermion "neutralinos",
+each of which in turn decays to LLP scalar + stable neutralino.
+
+The parameters to change in the simplified model are:
+
+1) The mass of the LLP (PID=36), default value 1.00000e+01
+
+2) The mass of the parent Higgs (PID=25), default value 1.250000e+01
+
+3) The mass of the intermediate "neutralino", default value 5.00000e+01 (PID=1000023), and the 
+invisible final-state particle, default value 1.00000e+00 (PID=1000022)
+
+4) The width of the LLP in the WIDTH block (same PID), default value 1.974600e-13, as well as the 
+width of the intermediate neutralino
+
+Madspin decay cards provided: gamma gamma

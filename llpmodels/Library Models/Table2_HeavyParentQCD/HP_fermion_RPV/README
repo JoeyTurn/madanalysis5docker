@@ -1,0 +1,12 @@
+HEAVY PARENT PRODUCTION: FERMION RPV
+Brian Shuve
+
+The parameters to change in the simplified model are:
+
+1) The mass of the LLP (PID=1000023), default value 1.000000e+02
+
+2) The mass of the heavy parent (PID=2000002), default value 6.000000e+02
+
+3) The width of the LLP in the WIDTH block (same PID), default value 1.974600e-13
+
+Madspin decay cards provided: 3 jets, 2 jets + l, 2 l + nu

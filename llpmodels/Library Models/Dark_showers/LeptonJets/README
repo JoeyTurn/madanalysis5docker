@@ -1,0 +1,6 @@
+RADIATING LEPTON JETS
+Malte Buschmann, Joachim Kopp, Jia Liu, Pedro A. N. Machado 
+
+Git repository for code to replicate the results of arXiv:1505.07459. In this model, dark matter is coupled to a U(1)' dark EM with a large coupling. The dark matter can radiate large numbers of the resulting dark photon, leading to a perturbative dark shower.
+
+The git repository is here: https://github.com/MSABuschman/DarkRadiation

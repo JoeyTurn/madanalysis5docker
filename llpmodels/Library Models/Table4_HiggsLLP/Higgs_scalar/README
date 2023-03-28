@@ -1,0 +1,15 @@
+HIGGS PRODUCTION, 2 LLPs: SCALAR LLP
+Brian Shuve
+
+This model has direct production of the SM Higgs, which decays to a pair of scalars (in the model, these are additional
+Higgs states). These scalars are the LLPs.
+
+The parameters to change in the simplified model are:
+
+1) The mass of the LLP (PID=36), default value 5.00000e+01
+
+2) The mass of the parent Higgs (PID=25), default value 1.250000e+01
+
+3) The width of the LLP in the WIDTH block (same PID), default value 1.974600e-13
+
+Madspin decay cards provided: gamma gamma, jj, ll
