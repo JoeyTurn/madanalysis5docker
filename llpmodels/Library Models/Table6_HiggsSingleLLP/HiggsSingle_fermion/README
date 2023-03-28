@@ -1,0 +1,17 @@
+HIGGS PRODUCTION, 1 LLP
+Brian Shuve
+
+This model has direct production of the SM Higgs, which decays to two different "neutralinos", n2 and n1.
+n2 is the LLP, while n1 is a stable invisible particle.
+
+The parameters to change in the simplified model are:
+
+1) The mass of the LLP (PID=1000023), default value 5.00000e+01
+
+2) The mass of the parent Higgs (PID=25), default value 1.250000e+01
+
+3) The mass of the light stable neutralino, n1, default value 1.00000e+00 (PID=1000023)
+
+4) The width of the LLP in the WIDTH block (same PID), default value 1.974600e-13
+
+Madspin decay cards provided: jj+invisible, ll+invisible (same or different flavours), l+jj, gamma gamma + invisible

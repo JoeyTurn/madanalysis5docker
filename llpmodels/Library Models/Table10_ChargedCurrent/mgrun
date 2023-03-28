@@ -1,0 +1,116 @@
+#!/usr/bin/python
+import re
+import os
+import sys
+import shutil
+def changeparacard(namelist,valuelist,fpara_path):
+    os.chdir(fpara_path)
+    ftemp=open('paratemp.dat','w')
+    with open('param_card_default.dat',"r") as fo:
+      for line in fo:
+          change=1
+          for j in range(len(namelist)):
+              tempidentifier='# '+namelist[j]
+              serchObj = re.search(r'(\s*|DECAY\s*)(\d+)(\s*)(.*)'+re.escape(tempidentifier)+r' *$',line,re.M|re.I|re.L)
+              if serchObj:
+                  ftemp.write(serchObj.group(1)+serchObj.group(2)+serchObj.group(3)+str(valuelist[j])+' '+tempidentifier+'\n')
+                  change=0
+          if change:
+              ftemp.write(line)
+    ftemp.close()
+    os.rename('paratemp.dat','param_card.dat')
+    os.chdir('..')
+    return 
+#read line number and vaule keywords in run card and generate keyvalue file
+def readkey(fpara_path):
+    ftemp=open('keyvalue.dat','w')
+    f = open(fpara_path,'r') 
+    runcardlines=f.readlines()
+    for i in range(len(runcardlines)):
+        searchObj = re.search(r'^(?!#)(.*)=(.*)!(.*)$',runcardlines[i],re.M|re.I|re.L)
+        if searchObj:
+            ftemp.write(searchObj.group(2)+'   '+str(i)+'\n')
+    ftemp.close()
+    f.close()
+    return
+
+#read key-value for run card from existing keyvalue file
+def readruncarddic(frun_path):
+    d = {}
+    with open(frun_path,'r') as f:
+            for line in f:
+                       (key, val) = line.split()
+                       d.update({key : val})
+    return d
+
+def changeruncard(key,newvalue,dic,frun_path):
+    ftemp=open(frun_path+'Cards/run_card_temp.dat','w')
+    frun = open(frun_path+'Cards/run_card.dat','r')
+    runcardlines=frun.readlines()
+    i=int(dic[key])
+    print runcardlines[i]
+    searchObj = re.search(r'^(?!#)(.*)=(.*)!(.*)$',runcardlines[i],re.M|re.I|re.L)
+    runcardlines[i]=' '+str(newvalue)+' = '+searchObj.group(2)+"!"+searchObj.group(3)+'\n'
+    ftemp.writelines(runcardlines)
+    ftemp.close()
+    frun.close()
+    os.rename(frun_path+'Cards/run_card_temp.dat',frun_path+'Cards/run_card.dat')
+    return
+
+
+def readcs(fbanner_path):
+    ftemp=open(fbanner_path, 'r')
+    templines=ftemp.readlines()
+    csline=templines[len(templines)-4]
+    lineelement=csline.split()
+    ftemp.close()
+    return lineelement[len(lineelement)-1]+'\n' 
+
+def readparam(fBM_path):
+    bmlist=[]
+    with open(fBM_path,'r') as fi:
+        for line in fi:
+            bmlist.append(line.split())
+    return bmlist
+
+def generate_events(path):
+    os.system(path+'/bin/generate_events')
+    return
+
+def rmrun(i):
+    os.system('rm -r ./Events/run_0'+str(i)+'/')
+    return
+
+def writecs(fresult,line):
+    fresult.write(line)
+    return
+
+def runmad(namelist, valuelist, fpara_path,fresult,rootpath,runtag):
+    try:
+        rmrun(1)
+    finally:
+        line=''
+        changeparacard(namelist,valuelist,fpara_path)
+        generate_events()
+        cs=readcs('./Events/run_01/run_01_'+runtag+'_1_banner.txt')
+        for word in valuelist:
+            line+=(word+'\t')
+        line+=str(cs)+'\n'
+        writecs(fresult,line)
+    return
+
+def runmad4b(namelist, valuelist, fpara_path, runtag, dic):
+#    changeruncard('run_tag',runtag,dic,fpara_path)
+    changeparacard(namelist,valuelist,fpara_path)
+    generate_events()
+
+def runsig(path,grid):
+	bmlist = readparam(grid)
+	for i in range (1,len(bmlist)):
+		changeparacard(bmlist[0],bmlist[int(i)],path+'Cards/')
+		generate_events(path)
+
+
+runsig(sys.argv[1], sys.argv[2])
+
+

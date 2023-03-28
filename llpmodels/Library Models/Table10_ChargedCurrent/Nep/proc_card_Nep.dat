@@ -1,0 +1,44 @@
+#************************************************************
+#*                        MadGraph 5                        *
+#*                                                          *
+#*                *                       *                 *
+#*                  *        * *        *                   *
+#*                    * * * * 5 * * * *                     *
+#*                  *        * *        *                   *
+#*                *                       *                 *
+#*                                                          *
+#*                                                          *
+#*    The MadGraph Development Team - Please visit us at    *
+#*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+#*                                                          *
+#************************************************************
+#*                                                          *
+#*               Command File for MadGraph 5                *
+#*                                                          *
+#*     run as ./bin/mg5  filename                           *
+#*                                                          *
+#************************************************************
+import model ChargeWN_UFO
+# Define multiparticle labels
+define p = g u c d s u~ c~ d~ s~
+define j = g u c d s u~ c~ d~ s~
+define l+ = e+ mu+
+define l- = e- mu-
+define vl = ve vm vt
+define vl~ = ve~ vm~ vt~
+define vll = ve vm vt ve~ vm~ vt~
+define ll = e- mu- e+ mu+
+# Specify process(es) to run
+generate p p > N1 e+ 
+# Output processes to MadEvent directory
+output LLP_Nep
+launch
+set nevents 1000
+set time_of_flight 0
+set WN1 Auto
+# This will create a directory PROC_$MODELNAME_$X
+# If you want to specify the path/name of the directory use
+# output PATH
+
+# To generate events, you can go to the created directory and 
+# run ./bin/generate_events

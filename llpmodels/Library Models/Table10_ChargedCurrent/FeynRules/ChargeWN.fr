@@ -1,0 +1,176 @@
+
+
+(* ************************** *)
+(* *****  Information   ***** *)
+(* ************************** *)
+
+M$ModelName = "NRChargeW"
+M$Information = { 
+  Authors	->{"Haolin Li, Michael Ramsey-Musolf, Jiang-Hao Yu"}, 
+  Version	-> "1.0",
+  Date        	-> "Dec 1, 2017",
+  Institutions 	-> {"Umass Amherst"},
+  Emails       	-> {"jhyu@physics.umass.edu"},
+  References   	-> {""},
+  URLs         -> {""}
+};
+
+(* ************************ *)
+(* *****  New Fields  ***** *)
+(* ************************ *)
+
+
+(* Physical vector boson fields *)
+M$ClassesDescription = {
+  (* Gauge bosons: physical vector fields *) 
+  V[34] == { 
+	ClassName	-> WR, 
+	SelfConjugate	-> False,  
+	Mass		-> {MWR, 15000.0}, 
+	Width		-> {WWR,   100.0}, 
+	ParticleName	-> "WR+", 
+	AntiParticleName-> "WR-", 
+    QuantumNumbers 	-> {Q->1}, 
+	PDG		-> 34, 
+	PropagatorLabel	-> "WR", 
+	PropagatorType	-> Sine, 
+	PropagatorArrow	-> Forward
+	FullName	-> "WR"
+  },
+
+
+(* Physical fermion fields *)
+   F[31] == {
+    ClassName        -> Nl,
+    ClassMembers     -> {N1,N2,N3},
+    Indices          -> {Index[Generation]},
+	(* QuantumNumbers   -> {LeptonNumber -> 1},*)
+    FlavorIndex      -> Generation,
+    SelfConjugate    -> True,
+    Mass             -> {mN, {mN1,40},    {mN2, 1*10^12}, {mN3, 1*10^14}},
+    Width            -> {    {WN1, 1.0*10^-8}, {WN2, 100},   {WN3, 100}},
+    PropagatorLabel  -> {"N", "N1", "N2", "N3"},
+    PropagatorType   -> Straight,
+    PropagatorArrow  -> None,
+    PDG              -> {9900012,9900014,9900016},
+    FullName         -> {"Heavy N1", "Heavy N2", "Heavy N3"}
+  }
+
+
+};
+
+
+
+
+(* ************************** *)
+(* *****   Parameters   ***** *)
+(* ************************** *)
+M$Parameters = {
+	(* EXTERNAL PARAMETERS *)
+	
+  kq == {	ParameterType -> External, 
+	  	Value -> 1,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->1,
+		TeX -> Subscript[k,q],
+		Description -> "W quark coupling scale: gq = kq*gSM*MW*MW/MWR/MWR = kq*ee/sW*MW*MW/MWR/MWR"},
+
+
+  kl == {	ParameterType -> External, 
+	  	Value -> 1,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->2,
+	  	TeX -> Subscript[k,l],
+          	Description -> "W lepton coupling scale: gl = kl*gSM*MW*MW/MWR/MWR  = kl*ee/sW*MW*MW/MWR/MWR"},
+			
+  kRq == {	ParameterType -> External, 
+	  	Value -> 1.0,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->3,
+		TeX -> Subsuperscript[k,R,q],
+		Description -> "WR quark coupling scale: gRq = kRq*gSM = kRq*ee/sW"},
+
+  kRl == {	ParameterType -> External, 
+	  	Value -> 1.0,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->4,
+	  	TeX -> Subsuperscript[k,R,l],
+          	Description -> "WR lepton coupling scale: gRl = kRl*gSM = kRl*ee/sW"},
+
+  Mnu == {	ParameterType -> External, 
+	  	Value -> 1*^-10,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->5,
+		TeX -> Subscript[M,nu],
+		Description -> "neutrino mass scale, default set to 0.1 eV"},
+
+  tanb == {	ParameterType -> External, 
+	  	Value -> 0.1,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->6,
+		TeX -> Subscript[tan,beta],
+		Description -> "ratio of the v2 and v1 in the bidoublet"},
+
+  epsi == {	ParameterType -> External, 
+	  	Value -> 0.000,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->7,
+		TeX -> epsilon,
+		Description -> "ratio of the vL and vR for the triplet"},
+  VCKMR == {	ParameterType->External, 
+ 		ComplexParameter->False, 
+		Indices->{Index[Generation],Index[Generation]}, 
+		BlockName->MixingVQR,
+        	Value-> {
+        		VCKMR[1,1]->1.0, VCKMR[1,2]->0.0, VCKMR[1,3]->0.0,
+        		VCKMR[2,1]->0.0, VCKMR[2,2]->1.0, VCKMR[2,3]->0.0,
+        		VCKMR[3,1]->0.0, VCKMR[3,2]->0.0, VCKMR[3,3]->1.0 }, 
+		TeX->Subsuperscript[V,ij,R], 
+        	Description->"Right-handed CKM Quark Mixing Matrix"
+  },
+  YlN == {	ParameterType->External, 
+ 		ComplexParameter->False, 
+		Indices->{Index[Generation],Index[Generation]}, 
+		BlockName->MixingVLR,
+        	Value-> {
+        		YlN[1,1]->1.0, YlN[1,2]->0.0, YlN[1,3]->0.0,
+        		YlN[2,1]->0.0, YlN[2,2]->1.0, YlN[2,3]->0.0,
+        		YlN[3,1]->0.0, YlN[3,2]->0.0, YlN[3,3]->1.0 }, 
+		TeX->Subscript[Y,lN], 
+        	Description->"Right-handed Lepton Mixing Matrix"
+  }
+};
+
+(* ************************** *)
+(* *** Kinetic+Mass Terms *** *)
+(* ************************** *)
+LNKin :=   I/2 N1bar[s1].Ga[v,s1,s2].del[N1[s2],v] - 1/2 mN1 N1bar[s1]N1[s1] \
+	+  I/2 N2bar[s1].Ga[v,s1,s2].del[ N2[s2],v] - 1/2 mN2 N2bar[s1]N2[s1] \
+	+  I/2 N3bar[s1].Ga[v,s1,s2].del[N3[s2],v] - 1/2 mN3 N3bar[s1]N3[s1];
+
+
+(* ************************* *)
+(* *** Interaction Terms *** *)
+(* ************************* *)
+
+(* two mixing terms in WL: mixing in WL-WR (kl), and mixing in Nl-vl (kLl). when mN is light, mixing in Nl-vl is dominant, when mN is heavy mixing in WL-WR may start to dominant*)
+(* LWL := ee/sw/Sqrt[2]*MW^2/MWR^2*W[mu]*( kq*uqbar.VCKMR.Ga[mu].ProjP.dq   + kl*Nlbar.YlN.Ga[mu].ProjP.l  +  kl*Nlbar.YlN.Ga[mu].ProjM.l  ); *)
+(* Usually kq is very small, depending on the mixing angle WL-WR *)
+
+LWL := ee/sw/Sqrt[2]*W[mu]*( 2*tanb/(1+tanb^2)*MW^2/MWR^2*kq*uqbar.VCKMR.Ga[mu].ProjP.dq + 2*tanb/(1+tanb^2)*MW^2/MWR^2*kl*Nlbar.YlN.Ga[mu].ProjP.l  +  Sqrt[epsi-Mnu/mN1]*kl*Nlbar.YlN.Ga[mu].ProjM.l  );  
+
+				   
+(* WR Currents: only useful when mN1 is heavy, in this case, Nl-vl mixing is sub-dominant*)
+LWR := ee/sw/Sqrt[2]*WR[mu]*( kRq*uqbar.VCKMR.Ga[mu].ProjP.dq \
+			       + kRl*Nlbar.YlN.Ga[mu].ProjP.l    );
+
+(*LZL := ee/sw/cw/2 Z[mu]*Mnu/mN1*vlbar.Ga[mu].kvN.ProjM.Nl;
+
+LZR := ee/sw/cw/(Sqrt[c2w])(ZR[mu]*(1/2*sw2*lbar.Ga[mu].ProjM.l+(-1/2+3/2*sw2)*lbar.Ga[mu].ProjP.l+sw2/2*vlbar.Ga[mu].ProjM.vl+cw*cw/2*Nlbar.Ga[mu].ProjP.Nl+(-1/6*sw2*uqbar.Ga[mu].ProjM.uq+(1/2-7/6*sw2)*uqbar.Ga[mu].ProjP.uq)+(-1/6*sw2*dqbar.Ga[mu].ProjM.dq+(-1/2+5/6*sw2)*dqbar.Ga[mu].ProjM.dq)));
+
+LZR1 :=ee/sw/cw/(Sqrt[c2w])ZR[mu]*(-c2w/2*Mnu/mN1*vlbar.kvN.Ga[mu].ProjM.Nl); *)
+
+(* Combine everything *)
+LagNew := LNKin + LWR + LWL + HC[LWL] + HC[LWR](* + LZL + HC[LZL] + LZR + LZR1 + HC[LZR1]*);
+LagFull := LSM + LagNew;
+

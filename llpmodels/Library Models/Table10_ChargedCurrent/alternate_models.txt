@@ -1,0 +1,9 @@
+ALTERNATIVE MODELS FOR CHARGED-CURRENT LLP PRODUCTION
+
+The provided model files give a minimal implementation of charged-current production of LLP with various decay channels. The best-motivated example of this LLP is a right-handed neutrino, and there exist in the literature several dedicated implementations of these models. The following UFO models and frameworks can also be used to simulate the charged-current simplified models outlined in Chapter 2:
+
+1) The HeavyN model, which is a UFO model that includes right-handed neutrion production at NLO: http://feynrules.irmp.ucl.ac.be/wiki/HeavyN (Richard Ruiz)
+
+2) Model with right-handed neutrinos, as well as W' and Z'(B-L) as found in left-right symmetric models:  http://feynrules.irmp.ucl.ac.be/wiki/EffLRSM (Richard Ruiz)
+
+3) FeynRules model for the minimal left-right symmetric model, along with software for generating parton-level events: https://sites.google.com/site/leftrighthep/ (Miha Nemevsek, Fabrizio Nesti, Goran Popara)

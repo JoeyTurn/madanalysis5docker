@@ -1,0 +1,3 @@
+mN1	WN1	MWR
+100	Auto	6000
+200	Auto	6000
