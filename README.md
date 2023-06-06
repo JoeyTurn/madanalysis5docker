@@ -16,4 +16,4 @@ Installing extra packages such as fastjet/delphes/pad are recommended, and can b
 
 Unfortunately this must be done every time the madanalysis5 terminal is opened; editing instillation_options.dat to bypass ROOT doesn't seem to function in docker while ROOT is still needed to download other packages.
 
-From here, everything should be set up and ready to be used! Any questions about the docker setup or related can be sent to joeyturn@uw.edu, and questions regarding MadAnalysis5 can be sent to the email listed inside https://github.com/MadAnalysis/madanalysis5.
+From here, everything should be set up and ready to be used! Any questions about the docker setup or related can be sent to joeyturnbull@berkeley.edu, and questions regarding MadAnalysis5 can be sent to the email listed inside https://github.com/MadAnalysis/madanalysis5.
